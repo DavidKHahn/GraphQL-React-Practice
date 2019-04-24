@@ -1,7 +1,8 @@
-import { makeExecutableSchema } from 'graphql-tools';
+import { ApolloServer } from 'apollo-server-express';
+import { gql } from 'apollo-server-express';
 import resolvers from './resolvers';
 
-const typeDefs = [`
+const typeDefs = gql`
     
     type Course {
         id: Int
@@ -15,11 +16,17 @@ const typeDefs = [`
         allCourses: [Course]
         course(id: Int!): Course
     }
-`];
+`;
 
-const schema = makeExecutableSchema({
+const schema = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    playground: {
+        endpoint: `http://localhost:4000/graphql`,
+        settings: {
+            'editor.theme': 'light'
+        }
+    }
 });
 
 export default schema;
