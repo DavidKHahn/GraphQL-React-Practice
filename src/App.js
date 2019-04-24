@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import Courses from './Courses'
 
 const client = new ApolloClient({
   uri: ""
@@ -10,8 +11,13 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <div>
-      <h2>My First Apollo Application</h2>
+    <div className="container">
+      <nav className="navbar navbar-dark bg-primary">
+        <a className="navbar-brand" href="#">React and GraphQL Application</a>
+      </nav>
+        <div>
+          <Courses />
+        </div>
     </div>
   </ApolloProvider>
 );
