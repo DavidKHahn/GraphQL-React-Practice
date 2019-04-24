@@ -1,5 +1,4 @@
 import express from 'express';
-import { resetCaches } from 'graphql-tag';
 
 const app = express();
 app.get('/', (req, res) => res.send('Hello World!'));
